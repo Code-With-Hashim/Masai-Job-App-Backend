@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 
 
 const { connect } = require('./config/db')
@@ -12,6 +13,9 @@ const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors({
+    origin : "*"
+}))
 
 app.use("/", authRouter)
 app.use("/job" , jobPostRouter)
